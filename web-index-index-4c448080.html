@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 信息索引与资料整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f4f5f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2229;
+            line-height: 1.6;
+        }
+        /* 深色头图 */
+        .hero {
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 4rem 2rem 5rem;
+            text-align: center;
+            border-bottom: 3px solid #2f81f7;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 620px;
+            margin: 0.6rem auto 1.8rem;
+            color: #b0b8c4;
+        }
+        .hero .tagline {
+            background: #1f2937;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #9bb3d8;
+            letter-spacing: 0.3px;
+        }
+        /* 导航 */
+        .top-nav {
+            background: #0d1117;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #2d3748;
+        }
+        .top-nav a {
+            color: #b9c7db;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.25s ease;
+        }
+        .top-nav a:hover {
+            color: #58a6ff;
+            border-bottom-color: #58a6ff;
+        }
+        /* 主区域 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        /* 核心介绍 */
+        .intro {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2.8rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        }
+        .intro h2 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #0f141c;
+        }
+        .intro p {
+            margin-bottom: 1rem;
+            color: #2a313c;
+        }
+        .intro a {
+            color: #2f81f7;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            font-weight: 500;
+        }
+        .intro a:hover {
+            color: #1a5dc9;
+        }
+        /* 场景卡片 */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        .scene-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.8rem 2.2rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+            border: 1px solid #e9ecf0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .scene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 28px rgba(13, 17, 23, 0.06);
+        }
+        .scene-card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #0f1923;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .scene-card h3::before {
+            content: "·";
+            font-size: 2.2rem;
+            color: #2f81f7;
+            line-height: 1;
+        }
+        .scene-card p {
+            color: #2d3748;
+            font-size: 0.95rem;
+        }
+        /* 常见说明/提示 */
+        .faq-note {
+            background: white;
+            border-radius: 20px;
+            padding: 2.2rem 2.8rem;
+            margin: 3rem 0 1rem;
+            border-left: 5px solid #2f81f7;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+        }
+        .faq-note h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #0f1923;
+        }
+        .faq-note p, .faq-note li {
+            color: #2d3748;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+        .faq-note ul {
+            padding-left: 1.5rem;
+        }
+        .faq-note a {
+            color: #2f81f7;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .faq-note a:hover {
+            color: #1a5dc9;
+        }
+        /* 底部 */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem 2.5rem;
+            font-size: 0.85rem;
+            color: #5f6b7a;
+            border-top: 1px solid #dde1e7;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .footer a {
+            color: #2f81f7;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 680px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 2.5rem 1.2rem 3.5rem; }
+            .container { padding: 2rem 1rem; }
+            .intro, .faq-note { padding: 1.8rem 1.2rem; }
+            .top-nav { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <a href="#intro">内容概况</a>
+    <a href="#scenes">使用方向</a>
+    <a href="#faq">常见说明</a>
+    <a href="#footer">联系</a>
+</nav>
+
+<header class="hero">
+    <h1>开云 · 资料整理与索引</h1>
+    <p>从信息归档、结构化链接到知识组织，我们关注如何让有价值的资料更容易被找到和复用。</p>
+    <span class="tagline">索引 · 整理 · 轻量导航</span>
+</header>
+
+<main class="container">
+
+    <section class="intro" id="intro">
+        <h2>以索引为方法的资料整理</h2>
+        <p>
+            <a href="https://web-index-kai-yun.com">开云</a> 是一套围绕信息索引与资源结构化展开的轻量导航体系。它并不追求面面俱到的聚合，而是希望帮助使用者从自身需求出发，建立清晰、可维护的资料组织方式。无论是个人知识库、团队文档集合，还是某个领域的参考列表，都可以通过索引化的思路获得更好的可读性与扩展性。
+        </p>
+        <p>
+            在信息过载的日常中，我们常常收藏了大量链接却难以回溯。透过有序的目录、分类标签与简洁的页面引导，<a href="https://web-index-kai-yun.com">开云</a> 尝试提供一种更低认知负担的整理方案——让每个资料节点都具备语境，让每次索引都指向真正需要的内容。
+        </p>
+    </section>
+
+    <section id="scenes">
+        <h2 style="font-weight: 500; font-size: 1.6rem; margin-bottom: 1.2rem; color: #0f1923;">三个典型场景</h2>
+        <div class="scenes">
+            <div class="scene-card">
+                <h3>个人知识索引</h3>
+                <p>汇集你长期关注的领域文章、工具与术语，用分类页替代零散的浏览器书签。定期整理页面结构，让积累真正转化为可检索的资源。</p>
+            </div>
+            <div class="scene-card">
+                <h3>团队资料目录</h3>
+                <p>为项目文档、设计规范、会议记录建立统一的索引入口。团队成员通过 <a href="https://web-index-kai-yun.com" style="color:#2f81f7; text-decoration: underline;">开云</a> 式的页面快速定位，减少反复询问“文件在哪里”的沟通成本。</p>
+            </div>
+            <div class="scene-card">
+                <h3>主题参考列表</h3>
+                <p>围绕特定主题（如编程语言学习、设计资源、开源项目）整理精选链接，并附上简要说明。索引本身即是一种知识地图，方便分享给同行或初学者。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-note" id="faq">
+        <h4>常见说明 · 关于索引与使用</h4>
+        <ul>
+            <li><strong>索引页面并非静态收藏夹</strong>——建议定期审视并更新链接有效性，保持索引的活力。</li>
+            <li><strong>分类不宜过细</strong>——三到五个主分类通常足够，过深的层级反而增加查找负担。</li>
+            <li><strong>每个链接可以附带一句上下文</strong>——说明为什么推荐这个资源，比单纯罗列URL更有帮助。</li>
+            <li>在 <a href="https://web-index-kai-yun.com">开云</a> 的框架下，你完全可以自定义页面风格和内容结构，它提供的是一组轻量的整理思路，而非固定的模板。</li>
+        </ul>
+        <p style="margin-top: 1rem;">如需了解更多索引与资料组织的具体方法，可以翻阅公共文档或直接使用 <a href="https://web-index-kai-yun.com">开云</a> 所呈现的页面作为参考起点。</p>
+    </section>
+
+</main>
+
+<footer class="footer" id="footer">
+    <p>基于索引与资料整理思路 · 内容持续迭代</p>
+    <p style="margin-top: 0.8rem;">使用 <a href="https://web-index-kai-yun.com">开云</a> 作为信息组织的起点，保持简洁与清晰。</p>
+</footer>
+
+</body>
+</html>
