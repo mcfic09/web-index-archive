@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hubportal-igame – 爱游戏</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f9fafb;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 1rem 1.5rem;
+    }
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    /* 导航 */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .logo {
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      color: #1e293b;
+    }
+    .logo span { color: #2563eb; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: #1e293b; }
+    /* hero */
+    .hero {
+      margin: 4rem 0 3rem;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: #475569;
+      max-width: 580px;
+    }
+    /* 介绍 block */
+    .intro {
+      margin: 2.8rem 0;
+    }
+    .intro h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid #2563eb;
+      padding-left: 0.75rem;
+    }
+    .intro p {
+      margin-bottom: 0.9rem;
+      color: #334155;
+    }
+    /* 场景卡片 */
+    .scenes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .scene-item {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+      border: 1px solid #f1f5f9;
+      transition: box-shadow 0.2s;
+    }
+    .scene-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .scene-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+    .scene-item p {
+      font-size: 0.95rem;
+      color: #475569;
+    }
+    /* 可信说明 */
+    .trust {
+      background: #f1f5f9;
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin: 2.8rem 0;
+    }
+    .trust h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+      color: #0f172a;
+    }
+    .trust p {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+    .trust ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .trust li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    .trust li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #2563eb;
+      font-weight: 600;
+    }
+    /* 常见说明 (faq like) */
+    .faq {
+      margin: 2.5rem 0 4rem;
+    }
+    .faq h2 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 1.1rem;
+      color: #0f172a;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.9rem 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .faq-a {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    /* 链接风格 */
+    a.link-inline {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(37,99,235,0.2);
+      transition: border-color 0.15s;
+    }
+    a.link-inline:hover {
+      border-bottom-color: #2563eb;
+    }
+    /* 响应式 */
+    @media (max-width: 560px) {
+      body { padding: 0.75rem 1rem; }
+      nav { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .nav-links { gap: 1.2rem; font-size: 0.9rem; }
+      .hero h1 { font-size: 1.6rem; }
+      .hero p { font-size: 1rem; }
+      .scene-item { padding: 1.2rem 1.25rem; }
+      .trust { padding: 1.25rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 顶部导航 -->
+  <nav>
+    <div class="logo"><span>✦</span> hubportal</div>
+    <ul class="nav-links">
+      <li><a href="#">站点</a></li>
+      <li><a href="#">场景</a></li>
+      <li><a href="#">说明</a></li>
+    </ul>
+  </nav>
+
+  <!-- hero 区域 -->
+  <div class="hero">
+    <h1>一个关于游戏体验的<br>轻量化入口</h1>
+    <p>这里记录着与「爱游戏」相关的内容索引、场景参考和常见问题的简释。不堆砌，不夸大，只呈现经过梳理的信息。</p>
+  </div>
+
+  <!-- 核心介绍：站点说明与可信角度 -->
+  <div class="intro">
+    <h2>关于这个站点</h2>
+    <p>
+      hubportal-igame 是一个以信息汇集和导航为主的页面，围绕<a href="https://hubportal-igame.com" class="link-inline">爱游戏</a>展开内容整理。
+      站内不收集个人数据，不嵌入第三方跟踪脚本，所有链接指向明确且经过筛选。
+    </p>
+    <p>
+      我们尝试用克制的篇幅把「爱游戏」这个名称背后所指向的内容方向、常见使用情景以及一些基础注意事项说清楚。没有复杂的交互，只有清晰的分组。
+    </p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes">
+    <div class="scene-item">
+      <h3>🕹️ 查阅游戏资讯与动态</h3>
+      <p>为希望快速了解近期游戏资讯、版本变化或活动安排的访客提供一个集中入口。页面聚合了来自<a href="https://hubportal-igame.com" class="link-inline">爱游戏</a>相关的公开信息片段，方便横向对比和回溯。</p>
+    </div>
+    <div class="scene-item">
+      <h3>🧩 内容索引与说明</h3>
+      <p>将分散在不同板块的常见内容进行结构化整理，比如场景分类、操作提示、名词解释等。适合初次接触「爱游戏」相关内容的用户用作参考。</p>
+    </div>
+    <div class="scene-item">
+      <h3>📋 轻量化备忘</h3>
+      <p>不需要登录或注册，页面本身即为一份可浏览的卡片式清单。无论是快速确认某个细节，还是作为日常回顾，都足够直接。</p>
+    </div>
+  </div>
+
+  <!-- 可信说明 -->
+  <div class="trust">
+    <h2>可信说明 · 几个事实</h2>
+    <p>这个页面由维护者自行搭建并托管于 GitHub Pages，内容来源均基于可查证的公开资料。我们遵循以下原则：</p>
+    <ul>
+      <li>不虚构数据，不写未经核实的断言</li>
+      <li>所有外链均指向原始来源或官方渠道</li>
+      <li>页面无广告、无弹窗、无自动下载</li>
+      <li>若内容有变化，会在此页面更新说明</li>
+    </ul>
+    <p style="margin-top: 0.8rem; color: #475569;">如果你对「爱游戏」的具体细节有疑问，可从本页的常见说明部分找到一些初步答案。</p>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq">
+    <h2>常见说明</h2>
+    <div class="faq-item">
+      <div class="faq-q">Q: 这个页面是官方站点吗？</div>
+      <div class="faq-a">不是。这是独立维护的介绍页，用于整理和展示与<a href="https://hubportal-igame.com" class="link-inline">爱游戏</a>相关的信息索引，不代指任何官方立场。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 页面会频繁更新吗？</div>
+      <div class="faq-a">视内容变化而定，通常按月或按关键信息变动做调整。更新日志会记录在本页说明区。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 我能否信任页面中的链接？</div>
+      <div class="faq-a">所有链接均经过手动确认，指向目标站点或资源。由于外部站点可能发生变化，建议结合实际访问情况自行判断。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 如果我有更多疑问怎么办？</div>
+      <div class="faq-a">可以通过 GitHub 仓库的 issue 区域留言，或参考本页提供的线索自行检索。我们暂不设即时客服。</div>
+    </div>
+  </div>
+
+  <!-- 页脚 (极简) -->
+  <footer style="padding: 1.5rem 0 2rem; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #64748b; text-align: left;">
+    <span>hubportal-igame · 仅作信息索引</span>
+  </footer>
+</div>
+</body>
+</html>
